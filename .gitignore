@@ -2,9 +2,12 @@
 *.zip
 
 # Ignore the entire PKLot dataset folder
-PKLot/*
-!PKLot/PKLot.yaml
 
 PKLot_YOLORdy/
 
 ModelResults/
+
+Datasets/*
+
+PKLot/*
+!PKLot/PKLot.yaml
