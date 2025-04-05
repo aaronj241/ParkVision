@@ -8,6 +8,7 @@ PKLot_YOLORdy/
 ModelResults/
 
 Datasets/*
+!Datasets/CompleteDataset-YOLORdy/CompleteDataset.yaml
 
 PKLot/*
 !PKLot/PKLot.yaml
