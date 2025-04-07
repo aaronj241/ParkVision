@@ -7,6 +7,7 @@ PKLot_YOLORdy/
 
 ModelResults/
 runs/
+Resources/
 
 Datasets/*
 !Datasets/CompleteDataset-YOLORdy/CompleteDataset.yaml
