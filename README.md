@@ -9,9 +9,10 @@
 ### Our Report
 
 The raw latex code report is located in the directory [report](report)
-1. main.tex contains our ungenerated latex code.
+- main.tex contains our ungenerated latex code.
 
 The final generated pdf is called [ParkVision_Report.pdf](ParkVision_Report.pdf)
+- there is an html version named [parkVision.html](parkVision.html)
 
 ### Our final model
 
