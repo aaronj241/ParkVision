@@ -1,7 +1,29 @@
 # ParkVision
 
-Completed so far:
+## Completed by
+- Aaron James, 10083071
+- Jacob Rempel, 100823181
 
-1. Basic setup of ipynb
-2. Downloaded Overleaf report template and performed basic modifications
-3. Included images from proposal/pres (missing one)
+## Locations of our important files
+
+### Our Report
+
+Our report is located in the directory [report](report)
+1. main.tex contains our ungenerated latex code.
+2. main.pdf is our latex generated completed report.
+
+### Our final model
+
+Our final model is located in the directory [runs/detect/train29](/runs/detect/train29)
+- This file contains all our our training graphs pregenerated from YOLO
+- or the folder [models](models)
+
+### Our .ipynb
+
+Our .ipynb is called ParkVision.ipynb
+
+- This contains all code used for the entire assignment
+- We converted this into an HTML file to provide easy viewing of the code and results.
+
+### Early Work
+We started with google colab, which you can find [here](https://colab.research.google.com/drive/12MzgKBlgRP4_SgKttco6g9N_RjiDnQoM?usp=sharing)
