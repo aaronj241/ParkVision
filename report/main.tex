@@ -79,11 +79,11 @@
 \section{Introduction}
 \label{sec:intro}
 
-Urbanization and population growth have led to a significant increase in the number of vehicles traveling, increasing the demand for efficient parking solutions in many different environments. Drivers often waste valuable time searching for available parking spots, contributing to increased traffic congestion, fuel consumption, and environmental pollution. Traditional methods of parking lot monitoring include physical on-foot monitoring, remote gate control with assistance from a surveillance system, or most prominently, none at all. The methods involving any active monitoring can be expensive, labor intensive and difficult to scale.
+Urbanization and population growth have led to a significant increase in the number of vehicles travelling, increasing the demand for efficient parking solutions in many different environments. Drivers often waste valuable time searching for available parking spots, contributing to increased traffic congestion, fuel consumption, and environmental pollution. Traditional methods of parking lot monitoring include physical on-foot monitoring, remote gate control with assistance from a surveillance system, or most prominently, none at all. The methods involving any active monitoring can be expensive, labour intensive and difficult to scale.
 
-Recent advancements in computer vision and deep learning offer a favorable alternative. Leveraging object detection models, and real time image processing, automation of vacancy monitoring in parking lots is achievable with visual data alone. This not only reduces infrastructure and labour costs, but enables an easy, scalable, and adaptable parking management solution.
+Recent advancements in computer vision and deep learning offer a favourable alternative. Leveraging object detection models, and real time image processing, automation of vacancy monitoring in parking lots is achievable with visual data alone. This not only reduces infrastructure and labour costs, but enables an easy, scalable, and adaptable parking management solution.
 
-ParkVision is a computer vision-based solution designed to detect vacant and occupied parking spots from an aerial perspective using real time image processing and deep learning. Our project uses a YOLO-based object detection model in combination with OpenCV to analyze parking lot footage to determine the vacancy status in a parking lot. ParkVision focuses specifically on parking lots with clearly defined parking lines and standardized layouts, making it easily suitable for deployment in most structured urban and commercial environments.
+ParkVision is a computer vision-based solution designed to detect vacant and occupied parking spots from an aerial perspective using real time image processing and deep learning. Our project uses a YOLO-based object detection model in combination with OpenCV to analyse parking lot footage to determine the vacancy status in a parking lot. ParkVision focuses specifically on parking lots with clearly defined parking lines and standardized layouts, making it easily suitable for deployment in most structured urban and commercial environments.
 
 The overall objective of this project is to provide real-time insights into parking lot occupancy, improve traffic flow, and enhance overall efficiency of urban parking systems.
 
@@ -94,14 +94,14 @@ The ParkVision system is designed to detect vacant and occupied parking spots fr
 
 \subsection{Dataset Preparation}
 
-We worked with three different public datasets from Kaggle.com, which contained thousands of labeled parking lot images with corresponding annotated occupancy information. All of these datasets were first pre-processed to ensure consistency.
+We worked with three different public datasets from Kaggle.com, which contained thousands of labelled parking lot images with corresponding annotated occupancy information. All of these datasets were first pre-processed to ensure consistency.
 
 \begin{enumerate}
     \item All annotations were converted to YOLO format (normalized center-based bounding boxes). Bounding box coordinates were extracted from XML and JSON in some cases.
 
     \item The datasets were split into training, validation, and testing sets based on size. Datasets with over 10 000 images were split into 80\% training, 10\% validation, and 10\% testing. The smaller dataset (under 10 000 images) was split into 70\% training, 15\% validation, and 15\% testing. These ratios were selected based on research to optimize model performance.
 
-    \item Bounding boxes were labeled either vacant or occupied based on the dataset annotations.
+    \item Bounding boxes were labelled either vacant or occupied based on the dataset annotations.
     
 \end{enumerate}
 
@@ -154,7 +154,7 @@ The model was evaluated using the following metrics:
 
     \end{itemize}
 
-    \item Detection Rate: Percentage of ground truth spots the model identified, as well as the model’s ability to locate all spaces in the image
+    \item Detection Rate: Percentage of ground truth spots the model identified, as well as the models ability to locate all spaces in the image
 \end{itemize}
 
 \section{Results}
@@ -181,7 +181,7 @@ When an out-of-domain image was selected, the model did not identify a single pa
 After the shortcomings using the PKLot dataset, we took a step back and re-evaluated the dataset in use. We realized that diversity in a dataset to properly train a model needs to be significantly higher, so that the model can better generalize images outside of the dataset domain. We found another two datasets on Kaggle, that had a lot more parking lot diversity. The new datasets are the \href{https://www.kaggle.com/datasets/muhwira/parking-lot-dataset}{parking-lot-dataset} and the \href{https://www.kaggle.com/datasets/trainingdatapro/parking-space-detection-dataset}{carpk\_coco} dataset. 
 
 \subsubsection{Combining Datasets}
-These datasets include a ton of different images and annotations of parking lots from various angles. Since the two datasets seem to each offer their own level of diversity, we decided to combine them to achieve better results. The parking-lot-dataset is approximately 30.3k images/labels, and the carpk\_coco dataset is roughly 1 450 images/labels. It is noted that the parking-lot-dataset contains some of the PKLot dataset, so the images and parking lot data there are not completely removed, just reduced to be more reasonable to allow our model to better generalize.
+These datasets include a ton of different images and annotations of different parking lots from various angles. Since the two datasets seem to each offer their own level of diversity, we decided to combine them to achieve better results. The parking-lot-dataset is approximately 30.3k images/labels, and the carpk\_coco dataset is roughly 1 450 images/labels. It is noted that the parking-lot-dataset contains some of the PKLot dataset, so the images and parking lot data there are not completely removed, just reduced to be more reasonable to allow our model to better generalize.
 
 \subsection{Combined Results}
 
