@@ -24,8 +24,7 @@
 \usepackage{parskip}
 \usepackage{etoolbox}
 \usepackage{hyperref}
-\usepackage{subfig}
-\usepackage{float}
+\usepackage{url}
 
 % images folder
 \graphicspath{ {./report-images/} }
@@ -81,11 +80,11 @@
 \section{Introduction}
 \label{sec:intro}
 
-Urbanization and population growth have led to a significant increase in the number of vehicles travelling, increasing the demand for efficient parking solutions in many different environments. Drivers often waste valuable time searching for available parking spots, contributing to increased traffic congestion, fuel consumption, and environmental pollution. Traditional methods of parking lot monitoring include physical on-foot monitoring, remote gate control with assistance from a surveillance system, or most prominently, none at all. The methods involving any active monitoring can be expensive, labour intensive and difficult to scale.
+Urbanization and population growth have led to a significant increase in the number of vehicles traveling, increasing the demand for efficient parking solutions in many different environments. Drivers often waste valuable time searching for available parking spots, contributing to increased traffic congestion, fuel consumption, and environmental pollution. Traditional methods of parking lot monitoring include physical on-foot monitoring, remote gate control with assistance from a surveillance system, or most prominently, none at all. The methods involving any active monitoring can be expensive, labor intensive and difficult to scale.
 
-Recent advancements in computer vision and deep learning offer a favourable alternative. Leveraging object detection models, and real time image processing, automation of vacancy monitoring in parking lots is achievable with visual data alone. This not only reduces infrastructure and labour costs, but enables an easy, scalable, and adaptable parking management solution.
+Recent advancements in computer vision and deep learning offer a favorable alternative. Leveraging object detection models, and real time image processing, automation of vacancy monitoring in parking lots is achievable with visual data alone. This not only reduces infrastructure and labour costs, but enables an easy, scalable, and adaptable parking management solution.
 
-ParkVision is a computer vision-based solution designed to detect vacant and occupied parking spots from an aerial perspective using real time image processing and deep learning. Our project uses a YOLO-based object detection model in combination with OpenCV to analyse parking lot footage to determine the vacancy status in a parking lot. ParkVision focuses specifically on parking lots with clearly defined parking lines and standardized layouts, making it easily suitable for deployment in most structured urban and commercial environments.
+ParkVision is a computer vision-based solution designed to detect vacant and occupied parking spots from an aerial perspective using real time image processing and deep learning. Our project uses a YOLO-based object detection model in combination with OpenCV to analyze parking lot footage to determine the vacancy status in a parking lot. ParkVision focuses specifically on parking lots with clearly defined parking lines and standardized layouts, making it easily suitable for deployment in most structured urban and commercial environments.
 
 The overall objective of this project is to provide real-time insights into parking lot occupancy, improve traffic flow, and enhance overall efficiency of urban parking systems.
 
@@ -96,14 +95,14 @@ The ParkVision system is designed to detect vacant and occupied parking spots fr
 
 \subsection{Dataset Preparation}
 
-We worked with three different public datasets from Kaggle.com, which contained thousands of labelled parking lot images with corresponding annotated occupancy information. All of these datasets were first pre-processed to ensure consistency.
+We worked with three different public datasets from Kaggle.com, which contained thousands of labeled parking lot images with corresponding annotated occupancy information. All of these datasets were first pre-processed to ensure consistency.
 
 \begin{enumerate}
     \item All annotations were converted to YOLO format (normalized center-based bounding boxes). Bounding box coordinates were extracted from XML and JSON in some cases.
 
-    \item The datasets were split into training, validation, and testing sets based on size. Datasets with over 10 000 images were split into 80\% training, 10\% validation, and 10\% testing. The smaller dataset (under 10 000 images) was split into 70\% training, 15\% validation, and 15\% testing. These ratios were selected based on research to optimize model performance. \cite{joseph2022optimal}
+    \item The datasets were split into training, validation, and testing sets based on size. Datasets with over 10 000 images were split into 80\% training, 10\% validation, and 10\% testing. The smaller dataset (under 10 000 images) was split into 70\% training, 15\% validation, and 15\% testing. These ratios were selected based on research to optimize model performance.
 
-    \item Bounding boxes were labelled either vacant or occupied based on the dataset annotations.
+    \item Bounding boxes were labeled either vacant or occupied based on the dataset annotations.
     
 \end{enumerate}
 
@@ -156,7 +155,7 @@ The model was evaluated using the following metrics:
 
     \end{itemize}
 
-    \item Detection Rate: Percentage of ground truth spots the model identified, as well as the models ability to locate all spaces in the image
+    \item Detection Rate: Percentage of ground truth spots the model identified, as well as the model’s ability to locate all spaces in the image
 \end{itemize}
 
 \section{Results}
@@ -165,7 +164,7 @@ The model was evaluated using the following metrics:
 \subsection{The PKLot Dataset}
 \subsubsection{Training}
 
-The first dataset we decided to use was \href{https://www.kaggle.com/datasets/ammarnassanalhajali/pklot-dataset}{PKLot} \cite{pklotdataset2013} which contains approximately 700k images. The images come from three different cameras, two cameras are from the same parking lot and the third camera is from a completely different parking lot. Every image is taken at a different time of the day throughout the year, this results in a dataset that has extensive data on the different types of cars, different weather conditions, and different times of day giving a ton of brightness deviations. We converted this data set into a YOLO ready format, and commenced training on a pre-trained YOLOv11 model, with a fine tuning of 25 epochs.
+The first dataset we decided to use was \href{https://www.kaggle.com/datasets/ammarnassanalhajali/pklot-dataset}{PKLot} from Kaggle which contains approximately 700k images. The images come from three different cameras, two cameras are from the same parking lot and the third camera is from a completely different parking lot. Every image is taken at a different time of the day throughout the year, this results in a dataset that has extensive data on the different types of cars, different weather conditions, and different times of day giving a ton of brightness deviations. We converted this data set into a YOLO ready format, and commenced training on a pre-trained YOLOv11 model, with a fine tuning of 25 epochs.
 
 \subsubsection{Overfitting and Limitations of PKLot}
 Unfortunately training a YOLO model on a dataset of the same three parking lots results in a model that is \textbf{very} good at identifying parking spaces \textbf{only} in that parking lot. This is the results of the YOLOv11m model after training for 25 epochs. 
@@ -180,46 +179,12 @@ When an out-of-domain image was selected, the model did not identify a single pa
 
 \subsubsection{Next Steps}
 
-After the shortcomings using the PKLot dataset, we took a step back and re-evaluated the dataset in use. We realized that diversity in a dataset to properly train a model needs to be significantly higher, so that the model can better generalize images outside of the dataset domain. We found another two datasets on Kaggle, that had a lot more parking lot diversity. The new datasets are the \href{https://www.kaggle.com/datasets/muhwira/parking-lot-dataset}{parking-lot-dataset} and the \href{https://www.kaggle.com/datasets/trainingdatapro/parking-space-detection-dataset}{carpk\_coco} dataset. \cite{Hsieh_2017_ICCV} \cite{muhwira_parkinglot_n.d.}
+After the shortcomings using the PKLot dataset, we took a step back and re-evaluated the dataset in use. We realized that diversity in a dataset to properly train a model needs to be significantly higher, so that the model can better generalize images outside of the dataset domain. We found another two datasets on Kaggle, that had a lot more parking lot diversity. The new datasets are the \href{https://www.kaggle.com/datasets/muhwira/parking-lot-dataset}{parking-lot-dataset} and the \href{https://www.kaggle.com/datasets/trainingdatapro/parking-space-detection-dataset}{carpk\_coco} dataset. 
 
 \subsubsection{Combining Datasets}
-These datasets include a ton of different images and annotations of different parking lots from various angles. Since the two datasets seem to each offer their own level of diversity, we decided to combine them to achieve better results. The parking-lot-dataset is approximately 30.3k images/labels, and the carpk\_coco dataset is roughly 1 450 images/labels. It is noted that the parking-lot-dataset contains some of the PKLot dataset, so the images and parking lot data there are not completely removed, just reduced to be more reasonable to allow our model to better generalize.
+These datasets include a ton of different images and annotations of parking lots from various angles. Since the two datasets seem to each offer their own level of diversity, we decided to combine them to achieve better results. The parking-lot-dataset is approximately 30.3k images/labels, and the carpk\_coco dataset is roughly 1 450 images/labels. It is noted that the parking-lot-dataset contains some of the PKLot dataset, so the images and parking lot data there are not completely removed, just reduced to be more reasonable to allow our model to better generalize.
 
 \subsection{Combined Results}
-The results from training models off this new dataset are very promising. We trained a medium and an extra large YOLO model. Here are the results for the extra large model.
-
-\subsubsection{Extra Large Results}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[scale=0.4]{report-images/pklot-20epochs-xl-results.png}
-  \caption{Summary Metrics of The Fine-Tuned Extra Large Model}
-  \label{fig:xl-results}
-\end{figure}
-
-
-
-\begin{figure}[H]
-    \centering
-    \subfloat[\centering Ontario Tech University's Parking Lot (Founders 2)]{{\includegraphics[width=5cm]{report-images/annotated_otu-from-aerial.jpg} }}%
-    \qquad
-    \subfloat[\centering A Generic Parking Lot]{{\includegraphics[width=5cm]{report-images/annotated_angled.jpg} }}%
-    \caption{Inference from our fine-tuned Extra-Large YOLOv11 model }%
-    \label{fig:inference}%
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \subfloat[\centering The Confusion Matrix]{{\includegraphics[width=7cm]{report-images/confusion_matrix_normalized.png} }}%
-    \qquad
-    \subfloat[\centering Model Performance Curves]{{\includegraphics[width=7cm]{report-images/results.png} }}%
-    \caption{YOLO Run Results }%
-    \label{fig:run-results}%
-\end{figure}
-
-The plots summarize the successful training and validation of our object detection model trained over 20 epochs. The training and validation losses, including box, classification and DFL losses show a consistent downward trend, indicating the successful learning. The evaluation metrics such as precision, recall and mean Average Precision (mAP) steadily improve. The mAP@50 and mAP@50-95 reach high values by the end of the training. The smoothed curves highlight that the model is converging well without signs of overfitting.
-
-The normalized confusion matrix also shows strong performance for the vacant and occupied classes, with 97\% and 96\% accuracy respectively. A noted area of struggle for our model is with background class. It correctly identifies only 53\% of the time and often misclassfies it as vacant. Overall the classifier distinguishes well between the parking statuses, but there is some room for improvement. We believe with more powerful hardware, and more training time, we could have greatly improved these results.
 
 
 \section{Conclusions}
@@ -236,7 +201,9 @@ This project presented numerous challenges. However, we have successfully develo
 % ----------
 % Bibliography
 % ----------
-\newpage
+
+\cite{pklotdataset2013}
+
 % Uncomment the following and add your references into biblio.bib file
 \bibliography{./biblio.bib}
 \bibliographystyle{abbrv}
